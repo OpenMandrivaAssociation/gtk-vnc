@@ -1,5 +1,5 @@
 %define name gtk-vnc
-%define version 0.2.0
+%define version 0.3.0
 %define release %mkrel 1
 %define api 1.0
 %define major 0
@@ -61,6 +61,8 @@ bindings for Python (PyGTK)
 
 %prep
 %setup -q
+libtoolize
+automake -a
 
 %build
 %configure2_5x
