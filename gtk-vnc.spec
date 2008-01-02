@@ -14,6 +14,7 @@ Source0: http://downloads.sourceforge.net/gtk-vnc/%{name}-%{version}.tar.gz
 License: LGPLv2
 Group: System/Libraries
 Url: http://gtk-vnc.sourceforge.net/
+BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildRequires: gtk+2-devel
 BuildRequires: libgnutls-devel
 BuildRequires: pygtk2.0-devel
