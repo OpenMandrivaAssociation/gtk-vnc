@@ -1,6 +1,6 @@
 %define name gtk-vnc
 %define version 0.3.2
-%define release %mkrel 1
+%define release %mkrel 2
 %define api 1.0
 %define major 0
 %define libname %mklibname %name %api %major
@@ -11,7 +11,7 @@ Name: %{name}
 Version: %{version}
 Release: %{release}
 Source0: http://downloads.sourceforge.net/gtk-vnc/%{name}-%{version}.tar.gz
-License: LGPLv2
+License: LGPLv2+
 Group: System/Libraries
 Url: http://gtk-vnc.sourceforge.net/
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
