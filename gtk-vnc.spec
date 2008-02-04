@@ -1,6 +1,6 @@
 %define name gtk-vnc
-%define version 0.3.2
-%define release %mkrel 2
+%define version 0.3.3
+%define release %mkrel 1
 %define api 1.0
 %define major 0
 %define libname %mklibname %name %api %major
@@ -18,6 +18,8 @@ BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildRequires: gtk+2-devel
 BuildRequires: libgnutls-devel
 BuildRequires: pygtk2.0-devel
+BuildRequires: mozilla-firefox-devel
+Requires: %libname >= %version
 
 %description
 gtk-vnc is a VNC viewer widget for GTK. It is built using 
@@ -59,20 +61,37 @@ coroutines allowing it to be completely asynchronous while
 remaining single threaded. It provides a core C library, and
 bindings for Python (PyGTK)
 
+%package -n mozilla-gtk-vnc
+Group: Networking/Remote access
+Summary: A VNC viewer widget for Mozilla browsers
+Requires: %libname >= %version
+
+%description -n mozilla-gtk-vnc
+gtk-vnc is a VNC viewer widget for GTK. This is a VNC viewer plugin
+for Mozilla Firefox and other browsers based on gtk-vnc.
+
 %prep
 %setup -q
 
 %build
-%configure2_5x
+%configure2_5x --with-examples --enable-plugin
 %make
 
 %install
 rm -rf $RPM_BUILD_ROOT
 %makeinstall_std
-rm -f %buildroot%_libdir/*.a %buildroot%py_platsitedir/*.*a
+rm -f %buildroot%_libdir/*.a %buildroot%py_platsitedir/*.*a %buildroot%_libdir/mozilla/plugins/gtk-vnc-plugin.*a
 
 %clean
 rm -rf $RPM_BUILD_ROOT
+
+%files
+%defattr(-,root,root)
+%_bindir/gvncviewer
+
+%files -n mozilla-gtk-vnc
+%defattr(-,root,root)
+%_libdir/mozilla/plugins/gtk-vnc-plugin.so
 
 %files -n %libname
 %defattr(-,root,root)
