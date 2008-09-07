@@ -1,6 +1,6 @@
 %define name gtk-vnc
-%define version 0.3.6
-%define release %mkrel 2
+%define version 0.3.7
+%define release %mkrel 1
 %define api 1.0
 %define major 0
 %define libname %mklibname %name %api %major
@@ -18,7 +18,9 @@ BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildRequires: gtk+2-devel
 BuildRequires: libgnutls-devel
 BuildRequires: pygtk2.0-devel
-BuildRequires: mozilla-firefox-devel
+BuildRequires: xulrunner-devel
+#gw not packaged yet
+#BuildRequires: libview-devel
 Requires: %libname >= %version
 
 %description
