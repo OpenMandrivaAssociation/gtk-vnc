@@ -1,6 +1,6 @@
 %define name gtk-vnc
 %define version 0.3.7
-%define release %mkrel 3
+%define release %mkrel 4
 %define api 1.0
 %define major 0
 %define libname %mklibname %name %api %major
@@ -24,6 +24,7 @@ BuildRequires: gtk+2-devel
 BuildRequires: libgnutls-devel
 BuildRequires: pygtk2.0-devel
 BuildRequires: xulrunner-devel
+BuildRequires: gtkglext-devel
 #gw not packaged yet
 #BuildRequires: libview-devel
 Requires: %libname >= %version
@@ -84,7 +85,7 @@ for Mozilla Firefox and other browsers based on gtk-vnc.
 %patch2 -p1 -b .updates
 
 %build
-%configure2_5x --with-examples --enable-plugin
+%configure2_5x --with-examples --enable-plugin --with-gtkglext=yes
 %make
 
 %install
