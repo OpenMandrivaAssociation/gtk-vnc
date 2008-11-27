@@ -82,6 +82,7 @@ for Mozilla Firefox and other browsers based on gtk-vnc.
 %patch0 -p1 -b .ungrab
 %patch1 -p1 -b .evdev
 %patch2 -p1 -b .updates
+autoreconf
 
 %build
 %configure2_5x --with-examples --enable-plugin
