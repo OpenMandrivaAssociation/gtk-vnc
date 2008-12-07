@@ -1,6 +1,6 @@
 %define name gtk-vnc
-%define version 0.3.7
-%define release %mkrel 6
+%define version 0.3.8
+%define release %mkrel 1
 %define api 1.0
 %define major 0
 %define libname %mklibname %name %api %major
@@ -11,11 +11,7 @@ Name: %{name}
 Version: %{version}
 Release: %{release}
 Source0: http://downloads.sourceforge.net/gtk-vnc/%{name}-%{version}.tar.gz
-# Fedora patches
-Patch0:  gtk-vnc-0.3.7-abs-ungrab.patch
-Patch1:  gtk-vnc-0.3.7-evdev.patch
-patch2:  gtk-vnc-0.3.7-updates.patch
-
+Patch: gtk-vnc-0.3.8-fix-linking.patch
 License: LGPLv2+
 Group: System/Libraries
 Url: http://gtk-vnc.sourceforge.net/
@@ -78,9 +74,7 @@ for Mozilla Firefox and other browsers based on gtk-vnc.
 
 %prep
 %setup -q
-%patch0 -p1 -b .ungrab
-%patch1 -p1 -b .evdev
-%patch2 -p1 -b .updates
+%patch -p1
 autoreconf
 
 %build
