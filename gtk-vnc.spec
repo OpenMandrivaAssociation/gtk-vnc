@@ -75,7 +75,7 @@ for Mozilla Firefox and other browsers based on gtk-vnc.
 %prep
 %setup -q
 %patch -p1
-autoreconf
+autoreconf -fi
 
 %build
 %configure2_5x --with-examples --enable-plugin
