@@ -1,6 +1,6 @@
 %define name gtk-vnc
-%define version 0.3.8
-%define release %mkrel 2
+%define version 0.3.9
+%define release %mkrel 1
 %define api 1.0
 %define major 0
 %define libname %mklibname %name %api %major
@@ -10,8 +10,7 @@ Summary: A VNC viewer widget for GTK
 Name: %{name}
 Version: %{version}
 Release: %{release}
-Source0: http://downloads.sourceforge.net/gtk-vnc/%{name}-%{version}.tar.gz
-Patch: gtk-vnc-0.3.8-fix-linking.patch
+Source0: ftp://ftp.gnome.org/pub/GNOME/sources/%{name}/%{name}-%{version}.tar.bz2
 License: LGPLv2+
 Group: System/Libraries
 Url: http://gtk-vnc.sourceforge.net/
@@ -74,8 +73,6 @@ for Mozilla Firefox and other browsers based on gtk-vnc.
 
 %prep
 %setup -q
-%patch -p1
-autoreconf -fi
 
 %build
 %configure2_5x --with-examples --enable-plugin
