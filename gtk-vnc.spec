@@ -20,6 +20,7 @@ BuildRequires: libgnutls-devel
 BuildRequires: pygtk2.0-devel
 BuildRequires: xulrunner-devel
 BuildRequires: libview-devel
+BuildRequires: libsasl-devel
 Requires: %libname >= %version
 
 %description
