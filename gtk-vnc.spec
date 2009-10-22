@@ -24,6 +24,7 @@ BuildRequires: pygtk2.0-devel
 BuildRequires: xulrunner-devel
 BuildRequires: libview-devel
 BuildRequires: libsasl-devel
+BuildRequires: intltool
 Requires: %libname >= %version
 
 %description
