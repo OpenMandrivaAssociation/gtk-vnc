@@ -1,6 +1,6 @@
 %define name gtk-vnc
 %define version 0.3.10
-%define release %mkrel 1
+%define release %mkrel 2
 %define api 1.0
 %define major 0
 %define libname %mklibname %name %api %major
@@ -11,9 +11,9 @@ Name: %{name}
 Version: %{version}
 Release: %{release}
 Source0: ftp://ftp.gnome.org/pub/GNOME/sources/%{name}/%{name}-%{version}.tar.bz2
-Source1: npupp.h
 # (fc) 0.3.10-1mdv fix plugin build (GIT)
 Patch0: gtk-vnc-0.3.10-pluginbuild.patch
+Patch1: gtk-vnc-0.3.10-new-xulrunner.patch
 License: LGPLv2+
 Group: System/Libraries
 Url: http://gtk-vnc.sourceforge.net/
@@ -92,8 +92,7 @@ for Mozilla Firefox and other browsers based on gtk-vnc.
 %prep
 %setup -q
 %patch0 -p1 -b .pluginbuild
-
-cp %{SOURCE1} plugin/
+%patch1 -p1
 
 %build
 %configure2_5x --with-examples --enable-plugin
