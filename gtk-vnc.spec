@@ -1,6 +1,6 @@
 %define name gtk-vnc
 %define version 0.3.10
-%define release %mkrel 2
+%define release %mkrel 3
 %define api 1.0
 %define major 0
 %define libname %mklibname %name %api %major
@@ -14,6 +14,14 @@ Source0: ftp://ftp.gnome.org/pub/GNOME/sources/%{name}/%{name}-%{version}.tar.bz
 # (fc) 0.3.10-1mdv fix plugin build (GIT)
 Patch0: gtk-vnc-0.3.10-pluginbuild.patch
 Patch1: gtk-vnc-0.3.10-new-xulrunner.patch
+# Fedora patches
+# Fix gcrypt threading initialization (rhbz #537489)
+Patch101: gtk-vnc-0.3.10-gcrypt-threading.patch
+# Drop VNC connection if the server sends a update spaning outside bounds
+# of desktop (rhbz #540810, Mandriva bug #58981)
+Patch102: gtk-vnc-0.3.10-bounds.patch
+
+
 License: LGPLv2+
 Group: System/Libraries
 Url: http://gtk-vnc.sourceforge.net/
@@ -93,6 +101,8 @@ for Mozilla Firefox and other browsers based on gtk-vnc.
 %setup -q
 %patch0 -p1 -b .pluginbuild
 %patch1 -p1
+%patch101 -p1
+%patch102 -p1 
 
 %build
 %configure2_5x --with-examples --enable-plugin
