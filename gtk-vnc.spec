@@ -1,6 +1,6 @@
 %define name gtk-vnc
-%define version 0.3.10
-%define release %mkrel 3
+%define version 0.4.0
+%define release %mkrel 1
 %define api 1.0
 %define major 0
 %define libname %mklibname %name %api %major
@@ -11,16 +11,8 @@ Name: %{name}
 Version: %{version}
 Release: %{release}
 Source0: ftp://ftp.gnome.org/pub/GNOME/sources/%{name}/%{name}-%{version}.tar.bz2
-# (fc) 0.3.10-1mdv fix plugin build (GIT)
-Patch0: gtk-vnc-0.3.10-pluginbuild.patch
 Patch1: gtk-vnc-0.3.10-new-xulrunner.patch
 # Fedora patches
-# Fix gcrypt threading initialization (rhbz #537489)
-Patch101: gtk-vnc-0.3.10-gcrypt-threading.patch
-# Drop VNC connection if the server sends a update spaning outside bounds
-# of desktop (rhbz #540810, Mandriva bug #58981)
-Patch102: gtk-vnc-0.3.10-bounds.patch
-
 
 License: LGPLv2+
 Group: System/Libraries
@@ -32,6 +24,7 @@ BuildRequires: pygtk2.0-devel
 BuildRequires: xulrunner-devel
 BuildRequires: libview-devel
 BuildRequires: libsasl-devel
+BuildRequires: gobject-introspection-devel
 BuildRequires: intltool
 Requires: %libname >= %version
 
@@ -99,10 +92,7 @@ for Mozilla Firefox and other browsers based on gtk-vnc.
 
 %prep
 %setup -q
-%patch0 -p1 -b .pluginbuild
 %patch1 -p1
-%patch101 -p1
-%patch102 -p1 
 
 %build
 %configure2_5x --with-examples --enable-plugin
@@ -120,7 +110,9 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(-,root,root)
+%_bindir/gvnccapture
 %_bindir/gvncviewer
+%_mandir/man1/gvnccapture.1*
 
 %files -n mozilla-gtk-vnc
 %defattr(-,root,root)
@@ -130,6 +122,9 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(-,root,root)
 %doc README NEWS AUTHORS
 %_libdir/libgtk-vnc-%{api}.so.%{major}*
+%_libdir/libgvnc-%{api}.so.%{major}*
+%_libdir/girepository-1.0/GVnc-%api.typelib
+%_libdir/girepository-1.0/GtkVnc-%api.typelib
 
 %files -n %develname
 %defattr(-,root,root)
@@ -137,7 +132,11 @@ rm -rf $RPM_BUILD_ROOT
 %_libdir/lib*.so
 %_libdir/lib*.la
 %_libdir/pkgconfig/%name-%{api}.pc
+%_libdir/pkgconfig/gvnc-%{api}.pc
+%_includedir/gvnc-%api
 %_includedir/gtk-vnc-%api
+%_datadir/gir-1.0/GVnc-%api.gir
+%_datadir/gir-1.0/GtkVnc-%api.gir
 
 %files -n python-%name
 %defattr(-,root,root)
