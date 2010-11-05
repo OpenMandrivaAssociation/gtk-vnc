@@ -1,6 +1,6 @@
 %define name gtk-vnc
-%define version 0.4.1
-%define release %mkrel 5
+%define version 0.4.2
+%define release %mkrel 1
 %define api 1.0
 %define major 0
 %define libname %mklibname %name %api %major
