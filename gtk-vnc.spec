@@ -25,7 +25,6 @@ BuildRequires: xulrunner-devel
 BuildRequires: libview-devel
 BuildRequires: libsasl-devel
 BuildRequires: gobject-introspection-devel
-BuildRequires: perl-Text-CSV
 BuildRequires: intltool
 Requires: %libname >= %version
 
