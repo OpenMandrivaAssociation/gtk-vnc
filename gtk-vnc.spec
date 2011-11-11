@@ -1,6 +1,6 @@
 %define name gtk-vnc
-%define version 0.4.3
-%define release %mkrel 2
+%define version 0.4.4
+%define release %mkrel 1
 %define api 1.0
 %define major 0
 %define libname %mklibname %name %api %major
@@ -10,7 +10,7 @@ Summary: A VNC viewer widget for GTK
 Name: %{name}
 Version: %{version}
 Release: %{release}
-Source0: ftp://ftp.gnome.org/pub/GNOME/sources/%{name}/%{name}-%{version}.tar.bz2
+Source0: ftp://ftp.gnome.org/pub/GNOME/sources/%{name}/%{name}-%{version}.tar.xz
 Patch1: gtk-vnc-0.3.10-new-xulrunner.patch
 # Fedora patches
 
