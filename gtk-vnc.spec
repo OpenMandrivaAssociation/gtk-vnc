@@ -99,14 +99,14 @@ for Mozilla Firefox and other browsers based on gtk-vnc.
 %make
 
 %install
-rm -rf $RPM_BUILD_ROOT
+rm -rf %{buildroot}
 %makeinstall_std
 rm -f %buildroot%_libdir/*.a %buildroot%py_platsitedir/*.*a %buildroot%_libdir/mozilla/plugins/gtk-vnc-plugin.*a
 
 %find_lang %{name}
 
 %clean
-rm -rf $RPM_BUILD_ROOT
+rm -rf %{buildroot}
 
 %files
 %defattr(-,root,root)
