@@ -21,8 +21,8 @@ License: LGPLv2+
 Group: System/Libraries
 Url: http://gtk-vnc.sourceforge.net/
 Source0: ftp://ftp.gnome.org/pub/GNOME/sources/%{name}/%{name}-%{version}.tar.xz
-Patch1: gtk-vnc-0.3.10-new-xulrunner.patch
-# Fedora patches
+Patch0:	gtk-vnc-0.5.0_NP_GetMIMEDescription.patch
+Patch1:	gtk-vnc-0.3.10-new-xulrunner.patch
 
 BuildRequires: intltool
 BuildRequires: vala-tools
@@ -186,7 +186,6 @@ pushd %{gtk3_builddir}
 popd
 
 %install
-rm -rf %{buildroot}
 %makeinstall_std
 %makeinstall_std -C %{gtk3_builddir}
 find %{buildroot} -type f -name "*.la" -exec rm -f {} ';'
