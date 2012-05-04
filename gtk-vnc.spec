@@ -177,10 +177,8 @@ pushd %{gtk3_builddir}
 %configure2_5x \
 	--disable-static \
 	--with-examples \
+	--disable-plugin \
 	--with-gtk=3.0
-
-#doesnt build
-	#--disable-plugin
 
 %make LIBS='-lgmodule-2.0 -lz'
 popd
