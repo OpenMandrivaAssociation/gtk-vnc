@@ -27,7 +27,7 @@ Patch1:	gtk-vnc-0.3.10-new-xulrunner.patch
 BuildRequires: intltool
 BuildRequires: vala-tools
 BuildRequires: gettext-devel
-BuildRequires: libsasl-devel
+BuildRequires: sasl-devel
 BuildRequires: xulrunner-devel
 BuildRequires: pkgconfig(gnutls)
 BuildRequires: pkgconfig(gobject-introspection-1.0)
