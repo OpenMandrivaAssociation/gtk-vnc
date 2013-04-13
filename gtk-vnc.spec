@@ -21,8 +21,6 @@ License: LGPLv2+
 Group: System/Libraries
 Url: http://gtk-vnc.sourceforge.net/
 Source0: ftp://ftp.gnome.org/pub/GNOME/sources/%{name}/%{name}-%{version}.tar.xz
-Patch0:	gtk-vnc-0.5.0_NP_GetMIMEDescription.patch
-Patch1:	gtk-vnc-0.3.10-new-xulrunner.patch
 
 BuildRequires: intltool
 BuildRequires: vala-tools
@@ -148,15 +146,6 @@ coroutines allowing it to be completely asynchronous while
 remaining single threaded. It provides a core C library, and
 bindings for Python (PyGTK)
 
-%package -n mozilla-%{name}
-Group: Networking/Remote access
-Summary: A VNC viewer widget for Mozilla browsers
-Requires: %{libname} >= %{version}
-
-%description -n mozilla-%{name}
-gtk-vnc is a VNC viewer widget for GTK. This is a VNC viewer plugin
-for Mozilla Firefox and other browsers based on gtk-vnc.
-
 %prep
 %setup -q
 %apply_patches
@@ -198,9 +187,6 @@ find %{buildroot} -type f -name "*.la" -exec rm -f {} ';'
 %{_bindir}/gvnccapture
 %{_bindir}/gvncviewer
 %{_mandir}/man1/gvnccapture.1*
-
-%files -n mozilla-%{name}
-%{_libdir}/mozilla/plugins/gtk-vnc-plugin.so
 
 %files -n %{libname}
 %{_libdir}/libgtk-vnc-%{api}.so.%{major}*
