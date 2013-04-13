@@ -13,6 +13,8 @@
 %define girname3 %mklibname %{name}-gir %{api3}
 %define develname3 %mklibname -d %{name} %{api3}
 
+%define _disable_ld_no_undefined 1
+
 Summary: A VNC viewer widget for GTK
 Name: gtk-vnc
 Version: 0.5.2
