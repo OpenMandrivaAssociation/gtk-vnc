@@ -15,7 +15,7 @@
 
 Summary: A VNC viewer widget for GTK
 Name: gtk-vnc
-Version: 0.5.1
+Version: 0.5.2
 Release: 1
 License: LGPLv2+
 Group: System/Libraries
@@ -35,6 +35,7 @@ BuildRequires: pkgconfig(gtk+-2.0)
 BuildRequires: pkgconfig(gtk+-3.0)
 BuildRequires: pkgconfig(pygtk-2.0)
 BuildRequires: pkgconfig(libview)
+BuildRequires: pkgconfig(libgcrypt)
 
 %description
 gtk-vnc is a VNC viewer widget for GTK. It is built using 
