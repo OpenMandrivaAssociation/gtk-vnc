@@ -4,6 +4,8 @@
 %define major	0
 %define libname %mklibname %{name} %{api} %{major}
 %define libgvnc %mklibname gvnc %{api} %{major}
+%define pulsevn %mklibname vncpulse %{api} %{major}
+%define pulsegr %mklibname vncpulse-gir %{api}
 %define girname %mklibname %{name}-gir %{api}
 %define girgvnc %mklibname gvnc-gir %{api}
 %define devname %mklibname -d %{name} %{api}
@@ -19,7 +21,7 @@
 
 Summary:	A VNC viewer widget for GTK
 Name:		gtk-vnc
-Version:	0.5.2
+Version:	0.5.3
 Release:	1
 License:	LGPLv2+
 Group:		System/Libraries
@@ -30,8 +32,9 @@ BuildRequires:	intltool
 BuildRequires:	vala-tools
 BuildRequires:	gettext-devel
 BuildRequires:	sasl-devel
-BuildRequires:	xulrunner-devel
+#BuildRequires:	xulrunner-devel
 BuildRequires:	pkgconfig(gnutls)
+BuildRequires:	pkgconfig(libpulse)
 BuildRequires:	pkgconfig(gobject-introspection-1.0)
 BuildRequires:	pkgconfig(gtk+-2.0)
 BuildRequires:	pkgconfig(gtk+-3.0)
@@ -60,6 +63,22 @@ Conflicts:	%{_lib}gtk-vnc1.0_0 < 0.4.4-2
 
 %description -n %{libgvnc}
 This package contains the gvnc shared library for %{name}.
+
+%package -n %{pulsevn}
+Summary:	A VNC viewer widget for GTK
+Group:		System/Libraries
+
+%description -n %{pulsevn}
+This package contains the gvnc shared library for %{name}.
+
+%package -n %{pulsegr}
+Summary:	GObject Introspection interface library for %{name}
+Group:		System/Libraries
+Requires:	%{pulsevn} = %{version}-%{release}
+Requires:	%{libname} = %{version}-%{release}
+
+%description -n %{pulsegr}
+GObject Introspection interface library for %{libgvnc}.
 
 %package -n %{libname3}
 Summary:	A VNC viewer widget for GTK3
@@ -197,6 +216,9 @@ popd
 %files -n %{libgvnc}
 %{_libdir}/libgvnc-%{api}.so.%{major}*
 
+%files -n %{pulsevn}
+%{_libdir}/libgvncpulse-%{api}.so.%{major}*
+
 %files -n %{libname3}
 %{_libdir}/libgtk-vnc-%{api3}.so.%{major}*
 
@@ -209,6 +231,9 @@ popd
 %files -n %{girname3}
 %{_libdir}/girepository-1.0/GtkVnc-%{api3}.typelib
 
+%files -n %{pulsegr}
+%{_libdir}/girepository-1.0/GVncPulse-1.0.typelib
+
 %files -n %{devname}
 %doc ChangeLog
 %{_libdir}/libgtk-vnc-%{api}.so
@@ -218,14 +243,18 @@ popd
 
 %files -n %{develgvnc}
 %{_libdir}/libgvnc-%{api}.so
+%{_libdir}/libgvncpulse-%{api}.so
 %{_libdir}/pkgconfig/gvnc-%{api}.pc
+%{_libdir}/pkgconfig/gvncpulse-%{api}.pc
 %{_includedir}/gvnc-%{api}
 %{_datadir}/gir-1.0/GVnc-%{api}.gir
+%{_datadir}/gir-1.0/GVncPulse-%{api}.gir
 
 %files -n %{devname3}
 %{_libdir}/libgtk-vnc-%{api3}.so
 %{_libdir}/pkgconfig/%{name}-%{api3}.pc
 %{_includedir}/gtk-vnc-%{api3}
+%{_includedir}/gvncpulse-%{api}/*.h
 %{_datadir}/gir-1.0/GtkVnc-%{api3}.gir
 %{_datadir}/vala/vapi/*
 
