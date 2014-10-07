@@ -32,13 +32,10 @@ BuildRequires:	intltool
 BuildRequires:	vala-tools
 BuildRequires:	gettext-devel
 BuildRequires:	sasl-devel
-#BuildRequires:	xulrunner-devel
 BuildRequires:	pkgconfig(gnutls)
 BuildRequires:	pkgconfig(libpulse)
 BuildRequires:	pkgconfig(gobject-introspection-1.0)
-BuildRequires:	pkgconfig(gtk+-2.0)
 BuildRequires:	pkgconfig(gtk+-3.0)
-BuildRequires:	pkgconfig(pygtk-2.0)
 BuildRequires:	pkgconfig(libview)
 BuildRequires:	pkgconfig(libgcrypt)
 
@@ -47,14 +44,6 @@ gtk-vnc is a VNC viewer widget for GTK. It is built using
 coroutines allowing it to be completely asynchronous while 
 remaining single threaded. It provides a core C library, and
 bindings for Python (PyGTK)
-
-%package -n %{libname}
-Summary:	A VNC viewer widget for GTK
-Group:		System/Libraries
-Requires:	gtk-vnc-common >= %{version}-%{release}
-
-%description -n %{libname}
-This package contains the gtk-vnc shared library for %{name}.
 
 %package -n %{libgvnc}
 Summary:	A VNC viewer widget for GTK
@@ -75,7 +64,6 @@ This package contains the gvnc shared library for %{name}.
 Summary:	GObject Introspection interface library for %{name}
 Group:		System/Libraries
 Requires:	%{pulsevn} = %{version}-%{release}
-Requires:	%{libname} = %{version}-%{release}
 
 %description -n %{pulsegr}
 GObject Introspection interface library for %{libgvnc}.
@@ -91,7 +79,6 @@ This package contains the gtk-vnc shared library for %{name}.
 %package -n %{girname}
 Summary:	GObject Introspection interface library for %{name}
 Group:		System/Libraries
-Requires:	%{libname} = %{version}-%{release}
 Conflicts:	%{_lib}gtk-vnc1.0_0 < 0.4.4-2
 
 %description -n %{girname}
@@ -126,17 +113,6 @@ bindings for Python (PyGTK)
 
 This package contains translations used by gtk-vnc
 
-%package -n %{devname}
-Summary:	A VNC viewer widget for GTK
-Group:		Development/C
-Requires:	%{libname} = %{version}-%{release}
-Requires:	%{girname} = %{version}-%{release}
-Provides:	%{name}-devel = %{version}-%{release}
-Provides:	%{name}%{api}-devel = %{version}-%{release}
-
-%description -n %{devname}
-This package contains the development files for %{name}.
-
 %package -n %{develgvnc}
 Summary:	A VNC viewer widget for GTK
 Group:		Development/C
@@ -158,47 +134,21 @@ Provides:	%{name}%{api3}-devel = %{version}-%{release}
 %description -n %{devname3}
 This package contains the development files for %{name}.
 
-%package -n python-%{name}
-Summary:	A VNC viewer widget for Python/GTK
-Group:Development/Python
-Requires:	%{libname} = %{version}-%{release}
-
-%description -n python-%{name}
-gtk-vnc is a VNC viewer widget for GTK. It is built using 
-coroutines allowing it to be completely asynchronous while 
-remaining single threaded. It provides a core C library, and
-bindings for Python (PyGTK)
-
 %prep
 %setup -q
 %apply_patches
-
-mkdir ../%{gtk3_builddir}
-cp -a . ../%{gtk3_builddir}
-mv ../%{gtk3_builddir} .
 
 %build
 %configure2_5x \
 	--disable-static \
 	--with-examples \
-	--enable-plugin \
-	--with-gtk=2.0
-
-%make LIBS='-lgmodule-2.0 -lz'
-
-pushd %{gtk3_builddir}
-%configure2_5x \
-	--disable-static \
-	--with-examples \
-	--disable-plugin \
+	--disable-python \
 	--with-gtk=3.0
 
-%make LIBS='-lgmodule-2.0 -lz'
-popd
+%make
 
 %install
 %makeinstall_std
-%makeinstall_std -C %{gtk3_builddir}
 
 %find_lang %{name}
 
@@ -210,9 +160,6 @@ popd
 %{_bindir}/gvncviewer
 %{_mandir}/man1/gvnccapture.1*
 
-%files -n %{libname}
-%{_libdir}/libgtk-vnc-%{api}.so.%{major}*
-
 %files -n %{libgvnc}
 %{_libdir}/libgvnc-%{api}.so.%{major}*
 
@@ -222,9 +169,6 @@ popd
 %files -n %{libname3}
 %{_libdir}/libgtk-vnc-%{api3}.so.%{major}*
 
-%files -n %{girname}
-%{_libdir}/girepository-1.0/GtkVnc-%{api}.typelib
-
 %files -n %{girgvnc}
 %{_libdir}/girepository-1.0/GVnc-%{api}.typelib
 
@@ -233,13 +177,6 @@ popd
 
 %files -n %{pulsegr}
 %{_libdir}/girepository-1.0/GVncPulse-1.0.typelib
-
-%files -n %{devname}
-%doc ChangeLog
-%{_libdir}/libgtk-vnc-%{api}.so
-%{_libdir}/pkgconfig/%{name}-%{api}.pc
-%{_includedir}/gtk-vnc-%{api}
-%{_datadir}/gir-1.0/GtkVnc-%{api}.gir
 
 %files -n %{develgvnc}
 %{_libdir}/libgvnc-%{api}.so
@@ -257,7 +194,4 @@ popd
 %{_includedir}/gvncpulse-%{api}/*.h
 %{_datadir}/gir-1.0/GtkVnc-%{api3}.gir
 %{_datadir}/vala/vapi/*
-
-%files -n python-%{name}
-%{py_platsitedir}/gtkvnc.so
 
