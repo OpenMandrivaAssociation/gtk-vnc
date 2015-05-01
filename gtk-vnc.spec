@@ -21,7 +21,7 @@
 
 Summary:	A VNC viewer widget for GTK
 Name:		gtk-vnc
-Version:	0.5.3
+Version:	 0.5.4
 Release:	10
 License:	LGPLv2+
 Group:		System/Libraries
@@ -40,8 +40,8 @@ BuildRequires:	pkgconfig(libview)
 BuildRequires:	pkgconfig(libgcrypt)
 
 %description
-gtk-vnc is a VNC viewer widget for GTK. It is built using 
-coroutines allowing it to be completely asynchronous while 
+gtk-vnc is a VNC viewer widget for GTK. It is built using
+coroutines allowing it to be completely asynchronous while
 remaining single threaded. It provides a core C library, and
 bindings for Python (PyGTK)
 
@@ -106,8 +106,8 @@ Summary:	A VNC viewer widget for GTK
 Group:		System/Libraries
 
 %description common
-gtk-vnc is a VNC viewer widget for GTK. It is built using 
-coroutines allowing it to be completely asynchronous while 
+gtk-vnc is a VNC viewer widget for GTK. It is built using
+coroutines allowing it to be completely asynchronous while
 remaining single threaded. It provides a core C library, and
 bindings for Python (PyGTK)
 

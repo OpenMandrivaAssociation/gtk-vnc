@@ -1,4 +1,5 @@
 removed_sources:
   gtk-vnc-0.5.2.tar.xz: 894019db4395b72c269c76a438e78aaa48641b34
-sources:
   gtk-vnc-0.5.3.tar.xz: 37545223e944d7083d5ae5b945431d8d14eddd47
+sources:
+  gtk-vnc-0.5.4.tar.xz: 7d7b3bd8459d2daef9b4b4e6adaeb78e879c0aa0
