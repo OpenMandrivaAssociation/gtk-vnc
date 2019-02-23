@@ -18,11 +18,12 @@
 %define devname3 %mklibname -d %{name} %{api3}
 
 %define _disable_ld_no_undefined 1
+%define _disable_rebuild_configure 1
 
 Summary:	A VNC viewer widget for GTK
 Name:		gtk-vnc
-Version:	 0.5.4
-Release:	14
+Version:	0.9.0
+Release:	1
 License:	LGPLv2+
 Group:		System/Libraries
 Url:		http://gtk-vnc.sourceforge.net/
@@ -36,7 +37,6 @@ BuildRequires:	pkgconfig(gnutls)
 BuildRequires:	pkgconfig(libpulse)
 BuildRequires:	pkgconfig(gobject-introspection-1.0)
 BuildRequires:	pkgconfig(gtk+-3.0)
-BuildRequires:	pkgconfig(libview)
 BuildRequires:	pkgconfig(libgcrypt)
 
 %description
@@ -142,8 +142,8 @@ This package contains the development files for %{name}.
 %configure2_5x \
 	--disable-static \
 	--with-examples \
-	--disable-python \
-	--with-gtk=3.0
+	--with-gtk=3.0 \
+	--without-libview
 
 %make
 
