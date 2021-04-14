@@ -22,14 +22,15 @@
 
 Summary:	A VNC viewer widget for GTK
 Name:		gtk-vnc
-Version:	0.9.0
-Release:	2
+Version:	1.2.0
+Release:	1
 License:	LGPLv2+
 Group:		System/Libraries
 Url:		http://gtk-vnc.sourceforge.net/
 Source0:	ftp://ftp.gnome.org/pub/GNOME/sources/gtk-vnc/%{url_ver}/%{name}-%{version}.tar.xz
-Patch1:		0002-gvnc-1.0.pc.in-Use-GLIB_REQUIRED.patch
+#Patch1:		0002-gvnc-1.0.pc.in-Use-GLIB_REQUIRED.patch
 
+BuildRequires:	meson
 BuildRequires:	intltool
 BuildRequires:	vala-tools
 BuildRequires:	gettext-devel
@@ -39,6 +40,9 @@ BuildRequires:	pkgconfig(libpulse)
 BuildRequires:	pkgconfig(gobject-introspection-1.0)
 BuildRequires:	pkgconfig(gtk+-3.0)
 BuildRequires:	pkgconfig(libgcrypt)
+BuildRequires:	pkgconfig(libpulse)
+BuildRequires:	pkgconfig(python)
+BuildRequires:	pkgconfig(vapigen)
 
 %description
 gtk-vnc is a VNC viewer widget for GTK. It is built using
@@ -140,16 +144,12 @@ This package contains the development files for %{name}.
 %autopatch -p1
 
 %build
-%configure2_5x \
-	--disable-static \
-	--with-examples \
-	--with-gtk=3.0 \
-	--without-libview
+%meson
 
-%make
+%meson_build
 
 %install
-%makeinstall_std
+%meson_install
 
 %find_lang %{name}
 
