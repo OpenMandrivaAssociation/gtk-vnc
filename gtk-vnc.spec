@@ -158,7 +158,7 @@ This package contains the development files for %{name}.
 %files
 %doc README NEWS AUTHORS
 %{_bindir}/gvnccapture
-%{_bindir}/gvncviewer
+#{_bindir}/gvncviewer
 %{_mandir}/man1/gvnccapture.1*
 
 %files -n %{libgvnc}
