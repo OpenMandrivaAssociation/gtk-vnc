@@ -28,7 +28,6 @@ License:	LGPLv2+
 Group:		System/Libraries
 Url:		http://gtk-vnc.sourceforge.net/
 Source0:	ftp://ftp.gnome.org/pub/GNOME/sources/gtk-vnc/%{url_ver}/%{name}-%{version}.tar.xz
-#Patch1:		0002-gvnc-1.0.pc.in-Use-GLIB_REQUIRED.patch
 
 BuildRequires:	meson
 BuildRequires:	intltool
