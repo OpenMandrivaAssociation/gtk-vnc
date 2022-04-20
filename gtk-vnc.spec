@@ -23,7 +23,7 @@
 Summary:	A VNC viewer widget for GTK
 Name:		gtk-vnc
 Version:	1.3.0
-Release:	1
+Release:	2
 License:	LGPLv2+
 Group:		System/Libraries
 Url:		http://gtk-vnc.sourceforge.net/
@@ -120,7 +120,9 @@ This package contains translations used by gtk-vnc
 %package -n %{develgvnc}
 Summary:	A VNC viewer widget for GTK
 Group:		Development/C
+Requires:	%{name} = %{version}-%{release}
 Requires:	%{libgvnc} = %{version}-%{release}
+Requires: %{pulsevn} = %{version}-%{release}
 Requires:	%{girgvnc} = %{version}-%{release}
 Provides:	gvnc%{api}-devel = %{version}-%{release}
 Provides:	gvnc-devel = %{version}-%{release}
