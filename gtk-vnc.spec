@@ -22,8 +22,8 @@
 
 Summary:	A VNC viewer widget for GTK
 Name:		gtk-vnc
-Version:	1.3.0
-Release:	2
+Version:	1.3.1
+Release:	1
 License:	LGPLv2+
 Group:		System/Libraries
 Url:		http://gtk-vnc.sourceforge.net/
