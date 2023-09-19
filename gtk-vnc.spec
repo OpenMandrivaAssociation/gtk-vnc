@@ -23,11 +23,11 @@
 Summary:	A VNC viewer widget for GTK
 Name:		gtk-vnc
 Version:	1.3.1
-Release:	3
+Release:	4
 License:	LGPLv2+
 Group:		System/Libraries
-Url:		http://gtk-vnc.sourceforge.net/
-Source0:	ftp://ftp.gnome.org/pub/GNOME/sources/gtk-vnc/%{url_ver}/%{name}-%{version}.tar.xz
+Url:		https://gtk-vnc.sourceforge.net/
+Source0:	https://ftp.gnome.org/pub/GNOME/sources/gtk-vnc/%{url_ver}/%{name}-%{version}.tar.xz
 
 BuildRequires:	meson
 BuildRequires:	intltool
