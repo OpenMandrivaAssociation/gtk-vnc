@@ -183,6 +183,8 @@ This package contains the development files for %{name}.
 %{_libdir}/girepository-1.0/GVncPulse-1.0.typelib
 
 %files -n %{develgvnc}
+%doc %{_datadir}/doc/gtk-vnc*
+%doc %{_datadir}/doc/gvnc/
 %{_libdir}/libgvnc-%{api}.so
 %{_libdir}/libgvncpulse-%{api}.so
 %{_libdir}/pkgconfig/gvnc-%{api}.pc
