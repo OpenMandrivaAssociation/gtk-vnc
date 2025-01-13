@@ -22,8 +22,8 @@
 
 Summary:	A VNC viewer widget for GTK
 Name:		gtk-vnc
-Version:	1.3.1
-Release:	6
+Version:	1.4.0
+Release:	1
 License:	LGPLv2+
 Group:		System/Libraries
 Url:		https://gtk-vnc.sourceforge.net/
@@ -38,10 +38,12 @@ BuildRequires:	pkgconfig(gnutls)
 BuildRequires:	pkgconfig(libpulse)
 BuildRequires:	pkgconfig(gobject-introspection-1.0)
 BuildRequires:	pkgconfig(gtk+-3.0)
+BuildRequires:  pkgconfig(gmp)
 BuildRequires:	pkgconfig(libgcrypt)
 BuildRequires:	pkgconfig(libpulse)
 BuildRequires:	pkgconfig(python)
 BuildRequires:	pkgconfig(vapigen)
+BuildRequires:  gi-docgen
 
 %description
 gtk-vnc is a VNC viewer widget for GTK. It is built using
@@ -181,6 +183,8 @@ This package contains the development files for %{name}.
 %{_libdir}/girepository-1.0/GVncPulse-1.0.typelib
 
 %files -n %{develgvnc}
+%doc %{_datadir}/doc/gtk-vnc*
+%doc %{_datadir}/doc/gvnc/
 %{_libdir}/libgvnc-%{api}.so
 %{_libdir}/libgvncpulse-%{api}.so
 %{_libdir}/pkgconfig/gvnc-%{api}.pc
