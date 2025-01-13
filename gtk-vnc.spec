@@ -43,6 +43,7 @@ BuildRequires:	pkgconfig(libgcrypt)
 BuildRequires:	pkgconfig(libpulse)
 BuildRequires:	pkgconfig(python)
 BuildRequires:	pkgconfig(vapigen)
+BuildRequires:  gi-docgen
 
 %description
 gtk-vnc is a VNC viewer widget for GTK. It is built using
