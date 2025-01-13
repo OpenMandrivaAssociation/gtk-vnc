@@ -184,7 +184,7 @@ This package contains the development files for %{name}.
 
 %files -n %{develgvnc}
 %doc %{_datadir}/doc/gtk-vnc*
-%doc %{_datadir}/doc/gvnc/
+%doc %{_datadir}/doc/gvnc*
 %{_libdir}/libgvnc-%{api}.so
 %{_libdir}/libgvncpulse-%{api}.so
 %{_libdir}/pkgconfig/gvnc-%{api}.pc
